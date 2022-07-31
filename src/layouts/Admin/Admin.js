@@ -38,8 +38,8 @@ var ps;
 function Admin(props) {
 
   getExams().then(
-    (response)=>{
-      console.log("Response",response.data)
+    (response) => {
+      console.log("Response", response.data)
     }
   );
 
@@ -48,6 +48,8 @@ function Admin(props) {
   const [sidebarOpened, setsidebarOpened] = React.useState(
     document.documentElement.className.indexOf("nav-open") !== -1
   );
+
+
   React.useEffect(() => {
     if (navigator.platform.indexOf("Win") > -1) {
       document.documentElement.className += " perfect-scrollbar-on";
@@ -69,6 +71,8 @@ function Admin(props) {
       }
     };
   });
+
+
   React.useEffect(() => {
     if (navigator.platform.indexOf("Win") > -1) {
       let tables = document.querySelectorAll(".table-responsive");
@@ -87,6 +91,8 @@ function Admin(props) {
     document.documentElement.classList.toggle("nav-open");
     setsidebarOpened(!sidebarOpened);
   };
+
+
   const getRoutes = (routes) => {
     return routes.map((prop, key) => {
       if (prop.layout === "/admin") {
@@ -102,6 +108,8 @@ function Admin(props) {
       }
     });
   };
+
+
   const getBrandText = (path) => {
     for (let i = 0; i < routes.length; i++) {
       if (location.pathname.indexOf(routes[i].layout + routes[i].path) !== -1) {
@@ -110,6 +118,8 @@ function Admin(props) {
     }
     return "Brand";
   };
+
+
   return (
     <BackgroundColorContext.Consumer>
       {({ color, changeColor }) => (
