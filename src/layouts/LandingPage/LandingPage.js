@@ -10,7 +10,6 @@ const exams = getExams().then(value=>{
     console.log('Response Data',value.data)
 });
 
-console.log('Exams', exams)
 
     return (
         <Container fluid>
