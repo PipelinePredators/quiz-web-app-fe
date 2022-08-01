@@ -1,15 +1,25 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Container,Row,Col } from 'reactstrap'
+import CarouselSlider from 'components/CarouselSlider/CarouselSlider'
+import {getExams} from '../../services/StudentService/ExaminationService'
 
 function LandingPage(props) {
+
+const exams = getExams().then(value=>{
+    console.log('Response',value)
+    console.log('Response Data',value.data)
+});
+
+console.log('Exams', exams)
+
     return (
-        <div>
-            <Link to="/admin">
-                <div>
-                    <h1 className='text-white'>Welcome to Home page</h1>
-                </div>
-            </Link>
-        </div>
+        <Container fluid>
+            <Col lg={12} xs={12}>
+                <Row>
+                    <CarouselSlider className="mt-5"/>
+                </Row>
+            </Col>
+        </Container>
     )
 }
 
