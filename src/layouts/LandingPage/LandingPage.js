@@ -1,5 +1,6 @@
 import React from 'react'
 import { Container, Row, Col } from 'reactstrap'
+import AppNavBar from 'components/AppNavbar/AppNavbar'
 import CarouselSlider from 'components/CarouselSlider/CarouselSlider'
 import { getExams } from '../../services/StudentService/ExaminationService'
 
@@ -12,13 +13,16 @@ function LandingPage(props) {
 
 
     return (
-        <Container fluid>
+        <dev>
+            <AppNavBar/>
+            <Container fluid>
             <Col lg={12} xs={12}>
                 <Row>
                     <CarouselSlider className="mt-5" />
                 </Row>
             </Col>
         </Container>
+        </dev>
     )
 }
 
