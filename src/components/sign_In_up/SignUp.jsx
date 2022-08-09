@@ -9,6 +9,7 @@ function SignUp(props) {
     firstName: "",
     lastName: "",
     email: "",
+    phoneNumber: "",
     password: "",
     confirmPassword: "",
   });
@@ -16,6 +17,7 @@ function SignUp(props) {
     firstName: "",
     lastName: "",
     email: "",
+    phoneNumber: "",
     password: "",
     confirmPassword: "",
   });
@@ -44,6 +46,11 @@ function SignUp(props) {
         case "lastName":
           if (!value) {
             stateObj[name] = "Please enter your last name.";
+          }
+          break;
+        case "phoneNumber":
+          if (!value) {
+            stateObj[name] = "Please enter your phone number.";
           }
           break;
         case "email":
@@ -116,6 +123,17 @@ function SignUp(props) {
           onBlur={validateInput}
         />
         {error.email && <span className="err"> {error.email}</span>}
+      </Form.Group>
+      <Form.Group className="mb-3  " controlId="formBasicEmail">
+        <Form.Control
+          type="number"
+          name="phoneNumber"
+          placeholder="Enter your phone number"
+          value={input.phoneNumber}
+          onChange={onInPutChange}
+          onBlur={validateInput}
+        />
+        {error.phoneNumber && <span className="err"> {error.phoneNumber}</span>}
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Control
