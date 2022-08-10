@@ -1,44 +1,35 @@
-import React, { useState } from 'react';
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  NavbarText,
-} from 'reactstrap';
+import React, { useState } from "react";
+import "./AppNavbar.css";
+import { Navbar, Nav, NavItem, NavLink } from "reactstrap";
 
-function AppNavBar(args) {
+function Example(args) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
 
   return (
     <div>
-        <container class="col">
-            <Navbar {...args}>
-            <NavbarBrand href="/">E-HIGh</NavbarBrand>
-            <NavbarToggler onClick={toggle} />
+      <Nav>
+        <div className="E-high-logo">
+          <NavItem>
+            <NavLink href="#">
+              <img alt="E-HIGH-logo" src="./Images/E-high-logo.jpg" />
+              E-HIGH
+            </NavLink>
+          </NavItem>
+        </div>
 
-            <NavItem class="row">
-                <NavLink href="/components/">LEADER BOARD</NavLink>
-            </NavItem>
-        
-            <NavItem class="row">
-                <NavLink href="/components/">ABOUT</NavLink>
-            </NavItem>
-
-        </Navbar>
-        </container>
-        
+        <div className="nav">
+          <NavItem>
+            <NavLink href="#">LEADER BOARD</NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink href="#">ABOUT</NavLink>
+          </NavItem>
+        </div>
+      </Nav>
     </div>
   );
 }
 
-export default AppNavBar;
+export default Example;
