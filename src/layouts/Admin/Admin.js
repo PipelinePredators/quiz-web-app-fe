@@ -30,18 +30,11 @@ import routes from "routes.js";
 
 import logo from "assets/img/react-logo.png";
 import { BackgroundColorContext } from "contexts/BackgroundColorContext";
-import { getExams } from "services/StudentService/ExaminationService";
 
 
 var ps;
 
 function Admin(props) {
-
-  getExams().then(
-    (response) => {
-      console.log("Response", response.data)
-    }
-  );
 
   const location = useLocation();
   const mainPanelRef = React.useRef(null);
