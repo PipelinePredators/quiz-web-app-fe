@@ -51,6 +51,22 @@ p{
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 }
 
+/* =============Login and signup page=============== */
+.form {
+  text-align: center;
+  padding-top: 78px;
+}
+
+.mb-3 {
+  width: 300px;
+  text-align: center;
+  margin: auto;
+}
+
+.button {
+  width: 300px;
+}
+
 /* ==========Footer=============== */
 footer {
   background:linear-gradient(145deg,#520da1,#7242f5);;

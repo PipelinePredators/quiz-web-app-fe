@@ -39,7 +39,7 @@ root.render(
       <BrowserRouter>
         <Switch>
           <Route path="/admin" render={(props) => <AdminLayout {...props} />} />
-          <Route path="/" render={(props)=><MainLayout {...props}/>}/>
+          <Route path="/" render={(props) => <MainLayout {...props} />} />
         </Switch>
       </BrowserRouter>
     </BackgroundColorWrapper>

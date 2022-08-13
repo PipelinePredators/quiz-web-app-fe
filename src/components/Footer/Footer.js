@@ -26,7 +26,7 @@ function Footer() {
     <footer className="footer px-0">
       <Container>
         <Row className="mx-0">
-          <Col xs={12}>
+          <Col lg={4} xs={12}>
             <h4>E-HIGH Developers.</h4>
             <p>
               David Asenso-Boadi
@@ -76,7 +76,7 @@ function Footer() {
               <a href="mailto:kweku4sta@gmail.com">kweku4sta@gmail.com</a>
             </p>
           </Col>
-          <Col xs={12}>
+          <Col lg={4}  xs={12}>
             <h4>Nav Links</h4>
             <ul className="footer__links px-0">
               <li><a href="LEADERboad.html">Leaderboard</a></li>
@@ -84,7 +84,7 @@ function Footer() {
               <li><a href="Messages.html">Messages</a></li>
             </ul>
           </Col>
-          <Col xs={12}>
+          <Col lg={4}  xs={12}>
             <div className="social__mediaHandles">
               <h4>Social Media Handles</h4>
               <p className="medias">

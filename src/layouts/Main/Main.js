@@ -5,6 +5,8 @@ import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 import FixedPlugin from "components/FixedPlugin/FixedPlugin.js";
 import Footer from 'components/Footer/Footer'
+import Login from 'views/Login'
+import Signup from 'views/Signup'
 
 const Main = (props) => {
 
@@ -16,8 +18,10 @@ const Main = (props) => {
                 <React.Fragment>
                     <div className='wrapper'>
                         <div className='main-panel' ref={mainPanelRef} data={color}>
-                            <AdminNavbar brandText="Home" />
+                            <AdminNavbar brandText="" />
                             <Switch>
+                                <Route path="/login" render={(props) => <Login {...props} />} />
+                                <Route path="/register" render={(props) => <Signup {...props} />} />
                                 <Route path="/" render={(props) => <Home {...props} />} />
                             </Switch>
                             <Footer/>
