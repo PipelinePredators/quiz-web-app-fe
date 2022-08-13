@@ -1,7 +1,7 @@
 import ArticleAlternateComponent from 'components/Articles/ArticleAlternateComponent'
 import ArticleComponent from 'components/Articles/ArticleComponent'
 import React from 'react'
-import { Row, Col, Card, CardTitle, CardText, Button, CardBody, CardSubtitle } from 'reactstrap'
+import { Row, Col, Button } from 'reactstrap'
 import Predator from '../assets/logo/logo.png'
 
 const Home = (props) => {

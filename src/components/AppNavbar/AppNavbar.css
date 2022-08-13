@@ -1,0 +1,15 @@
+div {
+  align-items: center;
+  /* gap: 6rem; */
+}
+
+.NavItem {
+  color: white;
+}
+
+.nav {
+  text-align: center;
+  padding-right: 15rem;
+  gap: 20rem;
+
+}
