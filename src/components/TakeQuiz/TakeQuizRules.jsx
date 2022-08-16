@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import Modal from "react-bootstrap/Modal";
+import { Button, Form, Modal } from "react-bootstrap";
 
 function TakeQuiz() {
   const [show, setShow] = useState(false);
@@ -25,7 +23,7 @@ function TakeQuiz() {
         </Modal.Header>
         <Modal.Body>
           <div style={{ backgroundColor: "black" }}>
-            <ol>
+            <ol style={{ color: "red" }}>
               <li>Each question carries the same mark</li>
               <li>
                 Indicate the number of questions you want to answer in the space
@@ -44,7 +42,7 @@ function TakeQuiz() {
           <Form>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Control
-                type="text"
+                type="number"
                 placeholder="Enter the number questions "
                 autoFocus
               />
