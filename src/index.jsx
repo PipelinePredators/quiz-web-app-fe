@@ -30,6 +30,8 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import ThemeContextWrapper from "./components/ThemeWrapper/ThemeWrapper";
 import BackgroundColorWrapper from "./components/BackgroundColorWrapper/BackgroundColorWrapper";
 import Sign from "components/sign_In_up/Sign.jsx";
+import TakeQuizCard from "components/TakeQuizCard/TakeQuizCard";
+import TakeQuiz from "components/TakeQuiz/TakeQuiz";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -47,6 +49,7 @@ root.render(
         </Switch>{" "}
       </BrowserRouter>{" "}
     </BackgroundColorWrapper>{" "}
-    <Sign />
+    <TakeQuizCard />
+    <TakeQuiz />
   </ThemeContextWrapper>
 );
