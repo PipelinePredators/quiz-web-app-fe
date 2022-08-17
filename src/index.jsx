@@ -49,7 +49,6 @@ root.render(
         </Switch>{" "}
       </BrowserRouter>{" "}
     </BackgroundColorWrapper>{" "}
-    <TakeQuizCard />
     <TakeQuiz />
   </ThemeContextWrapper>
 );
