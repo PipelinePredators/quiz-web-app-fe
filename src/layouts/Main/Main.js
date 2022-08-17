@@ -2,7 +2,7 @@ import AdminNavbar from 'components/Navbars/AdminNavbar'
 import { BackgroundColorContext } from 'contexts/BackgroundColorContext'
 import Home from 'views/Home'
 import React from 'react'
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, useLocation } from 'react-router-dom'
 import FixedPlugin from "components/FixedPlugin/FixedPlugin.js";
 import Footer from 'components/Footer/Footer'
 import Login from 'views/Login'
@@ -11,6 +11,8 @@ import Signup from 'views/Signup'
 const Main = (props) => {
 
     const mainPanelRef = React.useRef(null);
+
+    const location = useLocation();
 
     return (
         <BackgroundColorContext.Consumer>
@@ -24,7 +26,10 @@ const Main = (props) => {
                                 <Route path="/register" render={(props) => <Signup {...props} />} />
                                 <Route path="/" render={(props) => <Home {...props} />} />
                             </Switch>
-                            <Footer/>
+                            {
+                                // we don't want the Footer to be rendered on map page
+                                location.pathname.includes('admin') ? null : <Footer/>
+                            }
                         </div>
                     </div>
                     <FixedPlugin bgColor={color} handleBgClick={changeColor} />

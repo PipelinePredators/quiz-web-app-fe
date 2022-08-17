@@ -30,20 +30,20 @@ var routes = [
     component: Dashboard,
     layout: "/admin"
   },
-  {
-    path: "/icons",
-    name: "Icons",
-    icon: "tim-icons icon-atom",
-    component: Icons,
-    layout: "/admin"
-  },
-  {
-    path: "/notifications",
-    name: "Notifications",
-    icon: "tim-icons icon-bell-55",
-    component: Notifications,
-    layout: "/admin"
-  },
+  // {
+  //   path: "/icons",
+  //   name: "Icons",
+  //   icon: "tim-icons icon-atom",
+  //   component: Icons,
+  //   layout: "/admin"
+  // },
+  // {
+  //   path: "/notifications",
+  //   name: "Notifications",
+  //   icon: "tim-icons icon-bell-55",
+  //   component: Notifications,
+  //   layout: "/admin"
+  // },
   {
     path: "/user-profile",
     name: "User Profile",
@@ -51,19 +51,19 @@ var routes = [
     component: UserProfile,
     layout: "/admin"
   },
-  {
-    path: "/tables",
-    name: "Table List",
-    icon: "tim-icons icon-puzzle-10",
-    component: TableList,
-    layout: "/admin"
-  },
-  {
-    path: "/typography",
-    name: "Typography",
-    icon: "tim-icons icon-align-center",
-    component: Typography,
-    layout: "/admin"
-  },
+  // {
+  //   path: "/tables",
+  //   name: "Table List",
+  //   icon: "tim-icons icon-puzzle-10",
+  //   component: TableList,
+  //   layout: "/admin"
+  // },
+  // {
+  //   path: "/typography",
+  //   name: "Typography",
+  //   icon: "tim-icons icon-align-center",
+  //   component: Typography,
+  //   layout: "/admin"
+  // },
 ];
 export default routes;

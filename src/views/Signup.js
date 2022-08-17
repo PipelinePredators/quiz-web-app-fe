@@ -1,25 +1,53 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { signUp } from 'services/StudentService';
 
 const Signup = (props) => {
+
+  let location = useHistory()
+
+  const [enableButton, setEnabledButton] = React.useState(false)
+
+  const register = (input) => {
+    signUp(input).then((value) => {
+      if (value.status === 'success') location.push('./login');
+    })
+  }
+
   const [input, setInput] = React.useState({
-    firstName: "",
-    lastName: "",
+    firstname: "",
+    lastname: "",
     email: "",
-    phoneNumber: "",
+    phonenumber: "",
     password: "",
     confirmPassword: "",
   });
   const [error, setError] = React.useState({
-    firstName: "",
-    lastName: "",
+    firstname: "",
+    lastname: "",
     email: "",
-    phoneNumber: "",
+    phonenumber: "",
     password: "",
     confirmPassword: "",
   });
+
+  useEffect(() => {
+    if (
+      input.firstname &&
+      input.lastname &&
+      input.email &&
+      input.phonenumber &&
+      input.password &&
+      input.confirmPassword
+    ) {
+      setEnabledButton(true)
+    } else {
+      setEnabledButton(false)
+    }
+  }, [input,setEnabledButton])
+
 
   const onInPutChange = (e) => {
     const { name, value } = e.target;
@@ -36,18 +64,18 @@ const Signup = (props) => {
       const stateObj = { ...prev, [name]: "" };
 
       switch (name) {
-        case "firstName":
+        case "firstname":
           if (!value) {
             stateObj[name] = "Please enter your first name.";
           }
           break;
 
-        case "lastName":
+        case "lastname":
           if (!value) {
             stateObj[name] = "Please enter your last name.";
           }
           break;
-        case "phoneNumber":
+        case "phonenumber":
           if (!value) {
             stateObj[name] = "Please enter your phone number.";
           }
@@ -93,24 +121,24 @@ const Signup = (props) => {
       <Form.Group className="mb-3" controlId="formBasicText">
         <Form.Control
           type="text"
-          name="firstName"
+          name="firstname"
           placeholder="Enter first name"
-          value={input.firstName}
+          value={input.firstname}
           onChange={onInPutChange}
           onBlur={validateInput}
         />
-        {error.firstName && <span className="err"> {error.firstName}</span>}
+        {error.firstname && <span className="err"> {error.firstname}</span>}
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicText">
         <Form.Control
           type="text"
-          name="lastName"
+          name="lastname"
           placeholder="Enter first name"
-          value={input.lastName}
+          value={input.lastname}
           onChange={onInPutChange}
           onBlur={validateInput}
         />
-        {error.lastName && <span className="err"> {error.lastName}</span>}
+        {error.lastname && <span className="err"> {error.lastname}</span>}
       </Form.Group>
       <Form.Group className="mb-3  " controlId="formBasicEmail">
         <Form.Control
@@ -125,14 +153,14 @@ const Signup = (props) => {
       </Form.Group>
       <Form.Group className="mb-3  " controlId="formBasicEmail">
         <Form.Control
-          type="number"
-          name="phoneNumber"
+          type="text"
+          name="phonenumber"
           placeholder="Enter your phone number"
-          value={input.phoneNumber}
+          value={input.phonenumber}
           onChange={onInPutChange}
           onBlur={validateInput}
         />
-        {error.phoneNumber && <span className="err"> {error.phoneNumber}</span>}
+        {error.phonenumber && <span className="err"> {error.phonenumber}</span>}
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Control
@@ -159,7 +187,7 @@ const Signup = (props) => {
           <span className="err"> {error.confirmPassword}</span>
         )}
       </Form.Group>
-      <Button className="button mb-3" variant="dark">
+      <Button disabled={!enableButton} className="button mb-3" variant="dark" onClick={() => register(input)}>
         Sign up
       </Button>
       <br />

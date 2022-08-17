@@ -15,7 +15,7 @@ const Home = (props) => {
             <div className="header-hexagon mr-5">
               <img src={Predator} alt="company logo" />
             </div>
-            <div className>
+            <div>
               <h2>Lorem ipsum dolor sit amet.</h2>
               <Button>Get Started</Button>
             </div>
