@@ -19,40 +19,91 @@
 import React from "react";
 
 // reactstrap components
-import { Container, Nav, NavItem, NavLink } from "reactstrap";
+import { Container, Col, Row } from "reactstrap";
+import whatsappLogo from '../../assets/logo/whatsapplogo.png';
+import twitterLogo from '../../assets/logo/twitterlogo.png';
+import instagramLogo from '../../assets/logo/instagramlogo.png';
+import facebookLogo from '../../assets/logo/face.jpg';
 
 function Footer() {
   return (
-    <footer className="footer">
-      <Container fluid>
-        <Nav>
-          <NavItem>
-            <NavLink href="https://www.creative-tim.com/?ref=bdr-user-archive-footer">
-              Creative Tim
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink href="https://www.creative-tim.com/presentation?ref=bdr-user-archive-footer">
-              About Us
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink href="https://www.creative-tim.com/blog?ref=bdr-user-archive-footer">
-              Blog
-            </NavLink>
-          </NavItem>
-        </Nav>
-        <div className="copyright">
-          © {new Date().getFullYear()} made with{" "}
-          <i className="tim-icons icon-heart-2" /> by{" "}
-          <a
-            href="https://www.creative-tim.com/?ref=bdr-user-archive-footer"
-            target="_blank"
-          >
-            Creative Tim
-          </a>{" "}
-          for a better web.
-        </div>
+    <footer className="footer px-0">
+      <Container>
+        <Row className="mx-0">
+          <Col lg={4} xs={12}>
+            <h4>E-HIGH Developers.</h4>
+            <p>
+              David Asenso-Boadi
+              <br />
+              <a href="mailto:asensoboadi814@gmail.com">asensoboadi814@gmail.com</a>
+            </p>
+
+            <p>
+              Maxwell Adorsoo
+              <br />
+              <a href="mailto:adorsoomaxwell186@gmail.com">adorsoomaxwell186@gmail.com</a>
+            </p>
+
+            <p>
+              Michael Osei
+              <br />
+              <a href="mailto:knanamichael25@gmail.com">knanamichael25@gmail.com</a>
+            </p>
+            <p>
+              David Asalye
+              <br />
+              <a href="mailto:perrilconics5@gmail.com">perrilconics5@gmail.com</a>
+            </p>
+            <p>
+              Linda Ama Paha
+              <br />
+              <a href="mailto:pahaamalinda@gmail.com">pahaamalinda@gmail.com</a>
+            </p>
+            <p>
+              John Akanlegum
+              <br />
+              <a href="mailto:akanlegumjohn2@gmail.com">akanlegumjohn2@gmail.com</a>
+            </p>
+            <p>
+              Adwobiah Amissah
+              <br />
+              <a href="mailto:amissahadwobiah2002@gmail.com">amissahadwobiah2002@gmail.com</a>
+            </p>
+            <p>
+              Michael Viewu Bambino
+              <br />
+              <a href="mailto:viewumichael@gmail.com">viewumichael@gmail.com</a>
+            </p>
+            <p>
+              Ansah Foster
+              <br />
+              <a href="mailto:kweku4sta@gmail.com">kweku4sta@gmail.com</a>
+            </p>
+          </Col>
+          <Col lg={4}  xs={12}>
+            <h4>Nav Links</h4>
+            <ul className="footer__links px-0">
+              <li><a href="LEADERboad.html">Leaderboard</a></li>
+              <li><a href="Notification.html">Notification </a></li>
+              <li><a href="Messages.html">Messages</a></li>
+            </ul>
+          </Col>
+          <Col lg={4}  xs={12}>
+            <div className="social__mediaHandles">
+              <h4>Social Media Handles</h4>
+              <p className="medias">
+                <a href="####"> <img className="media__icons" src={instagramLogo} alt="" />Instagram </a>
+                <br />
+                <a href="###"> <img className="media__icons" src={facebookLogo} alt="" />Facebook</a>
+                <br />
+                <a href="####"> <img className="media__icons" src={twitterLogo} alt="" />Twitter</a>
+                <br />
+                <a href="####"> <img className="media__icons" src={whatsappLogo} alt="" />whatsapp</a>
+                <br />
+              </p>
+            </div>
+          </Col>
+        </Row>
       </Container>
     </footer>
   );

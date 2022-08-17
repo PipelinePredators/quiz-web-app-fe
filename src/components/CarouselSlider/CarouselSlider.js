@@ -1,4 +1,4 @@
-import { Carousel,CarouselItem,CarouselCaption,CarouselIndicators,CarouselControl } from "reactstrap"
+import { Carousel, CarouselItem, CarouselCaption, CarouselIndicators, CarouselControl } from "reactstrap"
 import { useState } from "react";
 
 const items = [
