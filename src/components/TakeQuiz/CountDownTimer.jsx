@@ -1,42 +1,49 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
+// This time is the calculated seconds returned base on the number of questions selected during the take quiz.
+const INITIAL_COUNT = 120;
+const twoDigits = (num) => String(num).padStart(2, "0");
 
-function CountDownTimer() {
-  // timer > 60 ? Math.trunc(timer / 60) + ":" + (timer - 60) : timer
-  let quizTime = 240;
+export default function Timer() {
+  const [secondsRemaining, setSecondsRemaining] = useState(() => INITIAL_COUNT);
 
-  const [timer, setTimer] = React.useState(() => quizTime);
-  const id = React.useRef(null);
+  const secondsToDisplay = secondsRemaining % 60;
+  const minutesRemaining = (secondsRemaining - secondsToDisplay) / 60;
+  const minutesToDisplay = minutesRemaining % 60;
+  const hoursToDisplay = (minutesRemaining - minutesToDisplay) / 60;
 
-  // Used clear interval to clear the current state when the timer reaches negative numbers
-
-  const clear = () => {
-    window.clearInterval(id.current);
-  };
-
-  React.useEffect(() => {
-    id.current = window.setInterval(() => {
-      setTimer((prevTime) => prevTime - 1);
-    }, 1000);
-    return () => clear();
-  }, []);
-
-  React.useEffect(() => {
-    if (timer === 0) {
-      clear();
+  useInterval(() => {
+    if (secondsRemaining > 0) {
+      setSecondsRemaining(secondsRemaining - 1);
     }
-  }, [timer]);
-  let minutes = Math.floor(timer / 60);
-  let seconds = Math.floor((timer - 60) / minutes);
-  console.log(seconds);
-
+  }, 1000);
   return (
-    <div>
-      <h3>
-        {timer}
-        {timer === 0 ? "Time Up!!" : " minutes more"}
-      </h3>
+    <div style={{ float: "right" }}>
+      <div style={{ fontFamily: "monospace", padding: 20, fontSize: "20px" }}>
+        <span>{secondsRemaining === 0 ? "Time Up!!" : "Time Remaining"}</span>{" "}
+        <br />
+        {twoDigits(hoursToDisplay)}:{twoDigits(minutesToDisplay)}:
+        {twoDigits(secondsToDisplay)}
+      </div>
     </div>
   );
 }
 
-export default CountDownTimer;
+function useInterval(callback, delay) {
+  const savedCallback = useRef();
+
+  // Remembers the latest callback.
+  useEffect(() => {
+    savedCallback.current = callback;
+  }, [callback]);
+
+  // Set up the interval.
+  useEffect(() => {
+    function tick() {
+      savedCallback.current();
+    }
+    if (delay !== null) {
+      let id = setInterval(tick, delay);
+      return () => clearInterval(id);
+    }
+  }, [delay]);
+}
