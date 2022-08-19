@@ -1,27 +1,26 @@
 import { Button, Form, Col, Row, Input, FormText } from "reactstrap";
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import React, { useState } from 'react'
-import Axios from "axios";
+import { signIn } from "services/StudentService";
 
 const Login = (props) => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  let history = useHistory();
 
   /**
    * It's a function that makes a get request to the server, and then logs the value or reason to the
    * console.
    */
-  const signIn = () => {
-    Axios.get("http://localhost:8080/student/api/login_student", { params: { email: email, password: password } }).then({
-      onfulfilled: (value) => {
-        console.log('This is the value', value);
-      },
-      onrejected: (reason) => {
-        console.log('This is the reason', reason);
-      }
-    })
-  }
+  const signin = () => {
+    signIn(email, password).then((value) => {
+      localStorage.setItem('token', JSON.stringify(value.token))
+      history.push("./home");
+
+    });
+  };
+
 
   return (
     <Row className="mx-0">
@@ -32,7 +31,7 @@ const Login = (props) => {
           <h1>Sign in E-high</h1>
           <Input type="email" name="email" placeholder="Enter email" onChange={(event) => setEmail(event.target.value)} />
           <Input className="my-3" type="password" placeholder=" Enter password" name="password" onChange={(event) => setPassword(event.target.value)} />
-          <Button variant="dark" onClick={signIn}>
+          <Button variant="dark" onClick={signin}>
             Log in
           </Button>
           <br />

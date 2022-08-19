@@ -20,6 +20,10 @@ import React from "react";
 
 // reactstrap components
 import { Container, Col, Row } from "reactstrap";
+import whatsappLogo from '../../assets/logo/whatsapplogo.png';
+import twitterLogo from '../../assets/logo/twitterlogo.png';
+import instagramLogo from '../../assets/logo/instagramlogo.png';
+import facebookLogo from '../../assets/logo/face.jpg';
 
 function Footer() {
   return (
@@ -88,13 +92,13 @@ function Footer() {
             <div className="social__mediaHandles">
               <h4>Social Media Handles</h4>
               <p className="medias">
-                <a href="####"> <img className="media__icons" src="./Images/instagram-logo.png" alt="" />Instagram </a>
+                <a href="####"> <img className="media__icons" src={instagramLogo} alt="" />Instagram </a>
                 <br />
-                <a href="###"> <img className="media__icons" src="./Images/face.jpg" alt="" />Facebook</a>
+                <a href="###"> <img className="media__icons" src={facebookLogo} alt="" />Facebook</a>
                 <br />
-                <a href="####"> <img className="media__icons" src="./Images/Twiter-logo.png" alt="" />Twitter</a>
+                <a href="####"> <img className="media__icons" src={twitterLogo} alt="" />Twitter</a>
                 <br />
-                <a href="####"> <img className="media__icons" src="./Images/whatsapp-logo.png" alt="" />whatsapp</a>
+                <a href="####"> <img className="media__icons" src={whatsappLogo} alt="" />whatsapp</a>
                 <br />
               </p>
             </div>
