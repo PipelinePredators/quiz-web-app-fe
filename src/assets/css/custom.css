@@ -20,6 +20,17 @@ p{
   line-height: 25px;
 }
 
+/*=============Navigation links===============*/
+.navigation a {
+  cursor: pointer;
+  color: white;
+}
+
+.navigation a:hover{
+  background-color: #520da1;
+  border-radius: 4px;
+}
+
 /* =============Home=========== */
 .header-bg{
     background:linear-gradient(145deg,#520da1,#7242f5);
@@ -46,7 +57,7 @@ p{
 }
 
 .header-hexagon{
-  width: 50%;
+  width: 70%;
   background-color: var(--red);
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 }

@@ -3,6 +3,9 @@ import ArticleComponent from 'components/Articles/ArticleComponent'
 import React from 'react'
 import { Row, Col, Button } from 'reactstrap'
 import Predator from '../assets/logo/logo.png'
+import imageOne from '../assets/img/education_two.png'
+import imageTwo from '../assets/img/education_three.png'
+import imageThree from '../assets/img/education_one.png'
 
 const Home = (props) => {
   return (
@@ -17,6 +20,7 @@ const Home = (props) => {
             </div>
             <div>
               <h2>Lorem ipsum dolor sit amet.</h2>
+              <h5>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat, placeat.</h5>
               <Button>Get Started</Button>
             </div>
           </div>
@@ -32,20 +36,15 @@ const Home = (props) => {
         </section>
       </Col>
       <Col lg={12} xs={12}>
-        <ArticleComponent/>
+        <ArticleComponent cardImage={imageOne} title="Take Quiz"/>
         <hr />
       </Col>
       <Col lg={12} xs={12}>
-        <ArticleAlternateComponent/>
+        <ArticleAlternateComponent cardImage={imageTwo} title="Review Past Questions"/>
         <hr />
       </Col>
       <Col lg={12} xs={12}>
-        <ArticleComponent/>
-        <hr />
-      </Col>
-      <Col lg={12} xs={12}>
-        <ArticleAlternateComponent/>
-        <hr />
+        <ArticleComponent cardImage={imageThree} title="Take Challenge"/>
       </Col>
     </Row>
   )
