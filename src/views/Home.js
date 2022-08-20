@@ -36,15 +36,15 @@ const Home = (props) => {
         </section>
       </Col>
       <Col lg={12} xs={12}>
-        <ArticleComponent cardImage={imageOne} title="Take Quiz"/>
+        <ArticleComponent cardImage={imageOne} title="Take Quiz" url="/quiz"/>
         <hr />
       </Col>
       <Col lg={12} xs={12}>
-        <ArticleAlternateComponent cardImage={imageTwo} title="Review Past Questions"/>
+        <ArticleAlternateComponent cardImage={imageTwo} title="Review Past Questions" url="/review"/>
         <hr />
       </Col>
       <Col lg={12} xs={12}>
-        <ArticleComponent cardImage={imageThree} title="Take Challenge"/>
+        <ArticleComponent cardImage={imageThree} title="Take Challenge" url="/challenge"/>
       </Col>
     </Row>
   )
