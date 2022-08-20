@@ -1,41 +1,16 @@
-import SubjectCards from 'components/SubjectCards/SubjectCards'
+import TakeQuizCard from 'components/TakeQuizCard/TakeQuizCard';
+import TakeQuizRules from 'components/TakeQuizCard/TakeQuizRules';
 import React from 'react'
-import { Col, Container, Row, Card, CardTitle, CardText } from 'reactstrap'
+import { useParams } from 'react-router-dom';
 
 const TakeQuiz = () => {
-    return (
-        <article>
-            <Container>
-                <Row lg={12}>
-                    <Card
-                        body
-                        className="my-2">
-                        <CardTitle tag="h5">
-                            Special Title Treatment
-                        </CardTitle>
-                        <CardText>
-                            With supporting text below as a natural lead-in to additional content.
-                        </CardText>
-                    </Card>
-                </Row>
-                <Row>
-                    <Col lg={4} sm={6} md={6}><SubjectCards /></Col>
-                    <Col lg={4} sm={6} md={6}><SubjectCards /></Col>
-                    <Col lg={4} sm={6} md={6}><SubjectCards /></Col>
-                    <Col lg={4} sm={6} md={6}><SubjectCards /></Col>
-                    <Col lg={4} sm={6} md={6}><SubjectCards /></Col>
-                    <Col lg={4} sm={6} md={6}><SubjectCards /></Col>
-                    <Col lg={4} sm={6} md={6}><SubjectCards /></Col>
-                    <Col lg={4} sm={6} md={6}><SubjectCards /></Col>
-                    <Col lg={4} sm={6} md={6}><SubjectCards /></Col>
-                    <Col lg={4} sm={6} md={6}><SubjectCards /></Col>
-                    <Col lg={4} sm={6} md={6}><SubjectCards /></Col>
-                    <Col lg={4} sm={6} md={6}><SubjectCards /></Col>
-                    <Col lg={4} sm={6} md={6}><SubjectCards /></Col>
-                </Row>
-            </Container>
-        </article>
-    )
+
+    let { id } = useParams();
+
+    const [body, setBody] = React.useState(
+        <TakeQuizRules handleClick={() => setBody((prevBody) => <TakeQuizCard />)} />
+    );
+    return <article>{body}</article>
 }
 
 export default TakeQuiz
