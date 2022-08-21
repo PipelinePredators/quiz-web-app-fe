@@ -7,8 +7,8 @@ const SubjectCards = ({ title,description,url }) => {
     return (
         <Card
             body
-            className="my-5">
-            <CardTitle tag="h5">
+            className="my-5 subject-card">
+            <CardTitle tag="h2">
                 {title}
             </CardTitle>
             <CardText>

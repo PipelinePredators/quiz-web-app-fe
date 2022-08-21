@@ -6,8 +6,12 @@ import Predator from '../assets/logo/logo.png'
 import imageOne from '../assets/img/education_two.png'
 import imageTwo from '../assets/img/education_three.png'
 import imageThree from '../assets/img/education_one.png'
+import { useHistory } from 'react-router-dom'
 
 const Home = (props) => {
+
+  const history = useHistory()
+
   return (
     <Row className="mx-0">
       <Col className="px-0" lg={12} xs={12}>
@@ -19,9 +23,9 @@ const Home = (props) => {
               <img src={Predator} alt="company logo" />
             </div>
             <div>
-              <h2>Lorem ipsum dolor sit amet.</h2>
-              <h5>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat, placeat.</h5>
-              <Button>Get Started</Button>
+              <h2>Welcome to the E-high testing platform</h2>
+              <h5>Test your might against some of the toughtest exams in the country</h5>
+              <Button   onClick={()=>history.push('../subject')}>Get Started</Button>
             </div>
           </div>
           <div className='w-50 d-lg-none d-sm-flex flex-column align-items-center'>
@@ -30,7 +34,7 @@ const Home = (props) => {
             </div>
             <div className="d-flex flex-column justify-content-center w-100">
               <h5 className="text-center">Lorem ipsum dolor sit amet.</h5>
-              <Button>Get Started</Button>
+              <Button   onClick={()=>history.push('../subject')}>Get Started</Button>
             </div>
           </div>
         </section>

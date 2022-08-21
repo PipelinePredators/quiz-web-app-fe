@@ -57,7 +57,7 @@ p{
 }
 
 .header-hexagon{
-  width: 70%;
+  width: 120%;
   background-color: var(--red);
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 }
@@ -76,6 +76,11 @@ p{
 
 .button {
   width: 300px;
+}
+
+/* ============Subject Card========== */
+.subject-card{
+  height:80%;
 }
 
 /* ==========Footer=============== */
