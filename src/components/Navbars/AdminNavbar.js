@@ -38,7 +38,7 @@ import {
   NavbarToggler,
   ModalHeader
 } from "reactstrap";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 
 function AdminNavbar(props) {
   const [collapseOpen, setcollapseOpen] = React.useState(false);
@@ -77,6 +77,8 @@ function AdminNavbar(props) {
   //This function let's u navigate to other pages
   let history = useHistory();
 
+  const location = useLocation();
+
   return (
     <>
       <Navbar className={classNames("navbar-absolute", color)} expand="lg">
@@ -87,11 +89,16 @@ function AdminNavbar(props) {
                 toggled: props.sidebarOpened
               })}
             >
-              <NavbarToggler onClick={props.toggleSidebar}>
-                <span className="navbar-toggler-bar bar1" />
-                <span className="navbar-toggler-bar bar2" />
-                <span className="navbar-toggler-bar bar3" />
-              </NavbarToggler>
+              {
+                // we don't want the Footer to be rendered on map page
+                !(location.pathname.includes('admin')) ?
+                  null :
+                  <NavbarToggler onClick={props.toggleSidebar}>
+                    <span className="navbar-toggler-bar bar1" />
+                    <span className="navbar-toggler-bar bar2" />
+                    <span className="navbar-toggler-bar bar3" />
+                  </NavbarToggler>
+              }
             </div>
             <NavbarBrand href="#pablo" onClick={(e) => e.preventDefault()}>
               {props.brandText}
@@ -103,52 +110,16 @@ function AdminNavbar(props) {
             <span className="navbar-toggler-bar navbar-kebab" />
           </NavbarToggler>
           <Collapse navbar isOpen={collapseOpen}>
-            <Nav className="ml-auto" navbar>
+            <Nav className="ml-auto navigation" navbar>
+              <NavLink onClick={() => history.push('../home')}>Home</NavLink>
+              <NavLink onClick={() => history.push('./leaderboard')}>Leaderboard</NavLink>
+              <NavLink onClick={() => history.push('./about')}>About</NavLink>
               <InputGroup className="search-bar">
                 <Button color="link" onClick={toggleModalSearch}>
-                  <i className="tim-icons icon-zoom-split" />
+                  <i className="tim-icons icon-zoom-split d-none d-lg-block" />
                   <span className="d-lg-none d-md-block">Search</span>
                 </Button>
               </InputGroup>
-              <UncontrolledDropdown nav>
-                <DropdownToggle
-                  caret
-                  color="default"
-                  data-toggle="dropdown"
-                  nav
-                >
-                  <div className="notification d-none d-lg-block d-xl-block" />
-                  <i className="tim-icons icon-sound-wave" />
-                  <p className="d-lg-none">Notifications</p>
-                </DropdownToggle>
-                <DropdownMenu className="dropdown-navbar" right tag="ul">
-                  <NavLink tag="li">
-                    <DropdownItem className="nav-item">
-                      Mike John responded to your email
-                    </DropdownItem>
-                  </NavLink>
-                  <NavLink tag="li">
-                    <DropdownItem className="nav-item">
-                      You have 5 more tasks
-                    </DropdownItem>
-                  </NavLink>
-                  <NavLink tag="li">
-                    <DropdownItem className="nav-item">
-                      Your friend Michael is in town
-                    </DropdownItem>
-                  </NavLink>
-                  <NavLink tag="li">
-                    <DropdownItem className="nav-item">
-                      Another notification
-                    </DropdownItem>
-                  </NavLink>
-                  <NavLink tag="li">
-                    <DropdownItem className="nav-item">
-                      Another one
-                    </DropdownItem>
-                  </NavLink>
-                </DropdownMenu>
-              </UncontrolledDropdown>
               <UncontrolledDropdown nav>
                 <DropdownToggle
                   caret
@@ -160,14 +131,14 @@ function AdminNavbar(props) {
                     <img alt="..." src={require("assets/img/anime3.png")} />
                   </div>
                   <b className="caret d-none d-lg-block d-xl-block" />
-                  <p  className="d-lg-none">Log out</p>
+                  <p className="d-lg-none">Enoch</p>
                 </DropdownToggle>
                 <DropdownMenu className="dropdown-navbar" right tag="ul">
                   <NavLink tag="li">
-                    <DropdownItem className="nav-item" onClick={()=>history.push('./admin/dashboard')}>Dashboard</DropdownItem>
+                    <DropdownItem className="nav-item" onClick={() => history.push('../admin/dashboard')}>Dashboard</DropdownItem>
                   </NavLink>
                   <NavLink tag="li">
-                    <DropdownItem className="nav-item" onClick={()=>history.push('./admin/user-profile')}>Profile</DropdownItem>
+                    <DropdownItem className="nav-item" onClick={() => history.push('../admin/user-profile')}>Profile</DropdownItem>
                   </NavLink>
                   <DropdownItem divider tag="li" />
                   <NavLink tag="li">

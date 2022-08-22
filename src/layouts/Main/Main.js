@@ -7,6 +7,10 @@ import FixedPlugin from "components/FixedPlugin/FixedPlugin.js";
 import Footer from 'components/Footer/Footer'
 import Login from 'views/Login'
 import Signup from 'views/Signup'
+import ReviewQuestion from 'views/ReviewQuestion'
+import TakeChallenge from 'views/TakeChallenge'
+import TakeQuiz from 'views/TakeQuiz'
+import Subject from 'views/Subjects'
 
 const Main = (props) => {
 
@@ -24,6 +28,10 @@ const Main = (props) => {
                             <Switch>
                                 <Route path="/login" render={(props) => <Login {...props} />} />
                                 <Route path="/register" render={(props) => <Signup {...props} />} />
+                                <Route path="/quiz/:subjectParam" render={(props) => <TakeQuiz {...props} />} />
+                                <Route path="/subject" render={(props) => <Subject {...props} />} />
+                                <Route path="/challenge" render={(props) => <TakeChallenge {...props} />} />
+                                <Route path="/review" render={(props) => <ReviewQuestion {...props} />} />
                                 <Route path="/" render={(props) => <Home {...props} />} />
                             </Switch>
                             {
