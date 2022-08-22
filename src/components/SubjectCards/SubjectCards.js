@@ -14,7 +14,7 @@ const SubjectCards = ({ title,description,url }) => {
             <CardText>
                 {description}
             </CardText>
-            <Button color="primary" onClick={()=>history.push(url)}>
+            <Button color="primary my-3" onClick={()=>history.push(url)}>
                 Begin
             </Button>
         </Card>
