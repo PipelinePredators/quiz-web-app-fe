@@ -39,11 +39,14 @@ import {
   ModalHeader
 } from "reactstrap";
 import { useHistory, useLocation } from "react-router-dom";
+import { useAuth } from "Guards/Auth";
 
 function AdminNavbar(props) {
   const [collapseOpen, setcollapseOpen] = React.useState(false);
   const [modalSearch, setmodalSearch] = React.useState(false);
   const [color, setcolor] = React.useState("navbar-transparent");
+
+
   React.useEffect(() => {
     window.addEventListener("resize", updateColor);
     // Specify how to clean up after this effect:
@@ -51,6 +54,7 @@ function AdminNavbar(props) {
       window.removeEventListener("resize", updateColor);
     };
   });
+
   // function that adds color white/transparent to the navbar on resize (this is for the collapse)
   const updateColor = () => {
     if (window.innerWidth < 993 && collapseOpen) {
@@ -59,6 +63,7 @@ function AdminNavbar(props) {
       setcolor("navbar-transparent");
     }
   };
+
   // this function opens and closes the collapse on small devices
   const toggleCollapse = () => {
     if (collapseOpen) {
@@ -68,6 +73,8 @@ function AdminNavbar(props) {
     }
     setcollapseOpen(!collapseOpen);
   };
+
+
   // this function is to open the Search modal
   const toggleModalSearch = () => {
     setmodalSearch(!modalSearch);
@@ -78,6 +85,13 @@ function AdminNavbar(props) {
   let history = useHistory();
 
   const location = useLocation();
+
+  const auth = useAuth();
+
+  const handleLogout = () =>{
+    auth.logout();
+    window.location.reload();
+  }
 
   return (
     <>
@@ -114,38 +128,39 @@ function AdminNavbar(props) {
               <NavLink onClick={() => history.push('../home')}>Home</NavLink>
               <NavLink onClick={() => history.push('./leaderboard')}>Leaderboard</NavLink>
               <NavLink onClick={() => history.push('./about')}>About</NavLink>
-              <InputGroup className="search-bar">
-                <Button color="link" onClick={toggleModalSearch}>
-                  <i className="tim-icons icon-zoom-split d-none d-lg-block" />
-                  <span className="d-lg-none d-md-block">Search</span>
-                </Button>
-              </InputGroup>
-              <UncontrolledDropdown nav>
-                <DropdownToggle
-                  caret
-                  color="default"
-                  nav
-                  onClick={(e) => e.preventDefault()}
-                >
-                  <div className="photo">
-                    <img alt="..." src={require("assets/img/anime3.png")} />
-                  </div>
-                  <b className="caret d-none d-lg-block d-xl-block" />
-                  <p className="d-lg-none">Enoch</p>
-                </DropdownToggle>
-                <DropdownMenu className="dropdown-navbar" right tag="ul">
-                  <NavLink tag="li">
-                    <DropdownItem className="nav-item" onClick={() => history.push('../admin/dashboard')}>Dashboard</DropdownItem>
-                  </NavLink>
-                  <NavLink tag="li">
-                    <DropdownItem className="nav-item" onClick={() => history.push('../admin/user-profile')}>Profile</DropdownItem>
-                  </NavLink>
-                  <DropdownItem divider tag="li" />
-                  <NavLink tag="li">
-                    <DropdownItem className="nav-item">Log out</DropdownItem>
-                  </NavLink>
-                </DropdownMenu>
-              </UncontrolledDropdown>
+              {
+                !auth.student && (<Button className="text-danger" onClick={() => history.push('./login')}>Login</Button>)}
+
+              {auth.student && (
+                <UncontrolledDropdown nav>
+                  <DropdownToggle
+                    caret
+                    color="default"
+                    nav
+                    onClick={(e) => e.preventDefault()}
+                  >
+                    <div className="photo">
+                      <img alt="..." src={require("assets/img/anime3.png")} />
+                    </div>
+                    <b className="caret d-none d-lg-block d-xl-block" />
+                    <p className="d-lg-none">Enoch</p>
+                  </DropdownToggle>
+                  <DropdownMenu className="dropdown-navbar" right tag="ul">
+                    <NavLink tag="li">
+                      <DropdownItem className="nav-item" onClick={() => history.push('../admin/dashboard')}>Dashboard</DropdownItem>
+                    </NavLink>
+                    <NavLink tag="li">
+                      <DropdownItem className="nav-item" onClick={() => history.push('../admin/user-profile')}>Profile</DropdownItem>
+                    </NavLink>
+                    <DropdownItem divider tag="li" />
+                    <NavLink tag="li">
+                      <DropdownItem className="nav-item" onClick={() => handleLogout() }>Log out</DropdownItem>
+                    </NavLink>
+                  </DropdownMenu>
+                </UncontrolledDropdown>
+              )
+              }
+
               <li className="separator d-lg-none" />
             </Nav>
           </Collapse>

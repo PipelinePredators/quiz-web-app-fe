@@ -1,5 +1,5 @@
 import SubjectCards from 'components/SubjectCards/SubjectCards'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setSubjectsState } from 'Redux/SubjectSlice'
 import { Col, Container, Row, Card, CardTitle, CardText } from 'reactstrap'
@@ -9,7 +9,7 @@ const Subject = () => {
 
 
     /* A state variable. */
-    const subjects = useSelector((state) => state.subjects.value);
+    const subjects = useSelector((state) => state.subject.value);
 
    /* A hook that is used to dispatch an action to the store. */
     const dispatch = useDispatch();

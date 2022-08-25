@@ -2,22 +2,25 @@ import { Button, Form, Col, Row, Input, FormText } from "reactstrap";
 import { Link, useHistory } from 'react-router-dom'
 import React, { useState } from 'react'
 import { signIn } from "services/StudentService";
+import { useAuth } from "Guards/Auth";
 
 const Login = (props) => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  let history = useHistory();
+  const auth = useAuth();
+  const history = useHistory();
 
-  /**
-   * It's a function that makes a get request to the server, and then logs the value or reason to the
-   * console.
-   */
+  
+/**
+ * Signin() is a function that calls signIn() which is a function that returns a promise that calls
+ * dispatch() which is a function that calls setStudentState() which is a function that returns a
+ * value.
+ */
   const signin = () => {
     signIn(email, password).then((value) => {
-      localStorage.setItem('token', JSON.stringify(value.token))
-      history.push("./home");
-
+      auth.login(value);
+      history.push('./')
     });
   };
 
