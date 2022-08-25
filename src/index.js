@@ -16,6 +16,8 @@ import "assets/css/custom.css";
 import ThemeContextWrapper from "./components/ThemeWrapper/ThemeWrapper";
 import BackgroundColorWrapper from "./components/BackgroundColorWrapper/BackgroundColorWrapper";
 import { PersistGate } from "redux-persist/lib/integration/react";
+import { AuthProvider } from "Guards/Auth";
+import RequireAuth from "Guards/RequireAuth";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -25,14 +27,15 @@ root.render(
       <ThemeContextWrapper>
         <BackgroundColorWrapper>
           <BrowserRouter>
-            <Switch>
-              <Route path="/admin" render={(props) => <AdminLayout {...props} />} />
-              <Route path="/" render={(props) => <MainLayout {...props} />} />
-            </Switch>
+            <AuthProvider>
+              <Switch>
+                <Route path="/admin" render={(props) => <RequireAuth><AdminLayout {...props} /></RequireAuth>} />
+                <Route path="/" render={(props) => <MainLayout {...props} />} />
+              </Switch>
+            </AuthProvider>
           </BrowserRouter>
         </BackgroundColorWrapper>
       </ThemeContextWrapper>
     </PersistGate>
   </Provider>
 );
- 

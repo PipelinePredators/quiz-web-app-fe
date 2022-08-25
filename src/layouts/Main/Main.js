@@ -11,6 +11,7 @@ import ReviewQuestion from 'views/ReviewQuestion'
 import TakeChallenge from 'views/TakeChallenge'
 import TakeQuiz from 'views/TakeQuiz'
 import Subject from 'views/Subjects'
+import RequireAuth from 'Guards/RequireAuth'
 
 const Main = (props) => {
 
@@ -29,9 +30,9 @@ const Main = (props) => {
                                 <Route path="/login" render={(props) => <Login {...props} />} />
                                 <Route path="/register" render={(props) => <Signup {...props} />} />
                                 <Route path="/quiz/:subjectParam" render={(props) => <TakeQuiz {...props} />} />
-                                <Route path="/subject" render={(props) => <Subject {...props} />} />
-                                <Route path="/challenge" render={(props) => <TakeChallenge {...props} />} />
-                                <Route path="/review" render={(props) => <ReviewQuestion {...props} />} />
+                                <Route path="/subject" render={(props) => <RequireAuth><Subject {...props} /></RequireAuth>} />
+                                <Route path="/challenge" render={(props) => <RequireAuth><TakeChallenge {...props} /></RequireAuth>} />
+                                <Route path="/review" render={(props) => <RequireAuth><ReviewQuestion {...props} /></RequireAuth>} />
                                 <Route path="/" render={(props) => <Home {...props} />} />
                             </Switch>
                             {
