@@ -1,53 +1,50 @@
-import React, { useDebugValue, useState } from "react";
+import React, { useState } from "react";
 import { Row, Col, Button, Card, CardTitle, CardText, Modal, ModalBody, ModalFooter, Container } from 'reactstrap'
 import { Form } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { getTakeQuizzes } from "services/QuizService";
+import { setTakeQuizState } from "Redux/TakeQuizSlice";
 
-function TakeQuizRules(props) {
+function TakeQuizRules({ handleClick }) {
 
   const [modal, setModal] = useState(false);
   const { subjectParam } = useParams();
+  const [questionNumber, setQuestionNumber] = useState(20);
 
   /* Getting the subjects from the redux store. */
-  const subjects = useSelector((state) => state.subjects.value);
-  
-  const [quizPreferences, setQuizPreference] = useState({
-    subjectId: 0,
-    questionNumber: 0
-  });
+  const subjects = useSelector((state) => state.subject.value);
 
   const toggle = () => setModal(!modal)
 
+  const dispatch = useDispatch();
 
-/**
- * It takes the subject name from the URL and filters the subjects array to find the subject with the
- * same name. It then sets the state of the quizPreferences object with the subject id and the question
- * number.
- */
+
+  /**
+   * It takes the subject name from the URL and filters the subjects array to find the subject with the
+   * same name. It then sets the state of the quizPreferences object with the subject id and the question
+   * number.
+   */
   const onStartClicked = () => {
-
-    console.log('Subjects',subjects)
     const filteredSubject = subjects.filter((subject) => {
-      console.log('Subject',subject)
       let subjectName = subjectParam.toLocaleLowerCase();
       let subjectNameObj = subject.name.toLocaleLowerCase();
       return subjectName === subjectNameObj;
     })
-    console.log('Filtered subject',filteredSubject)
 
     const value = {
       subjectId: filteredSubject[0].id,
-      questionNumber: 20
+      questionNumber: questionNumber
     }
 
-    console.log('Value',value)
+    /* Calling the getTakeQuizzes function which is a service function that makes an API call to the
+    backend. It then dispatches the response to the redux store. */
+    getTakeQuizzes({ subjectId: value.subjectId, questionNumber: value.questionNumber }).then(value => {
+      dispatch(setTakeQuizState(value));
+      handleClick();
+    })
 
-    setQuizPreference(value)
-
-    props.handleClick();
   }
-  console.log('Subject id', quizPreferences);
 
   return (
     <Container>
@@ -92,8 +89,7 @@ function TakeQuizRules(props) {
       </Row>
       <Modal
         isOpen={modal}
-        toggle={toggle}
-        {...props}>
+        toggle={toggle}>
         <ModalBody>
           <Form className="form justify-content-center pt-0">
             <Form.Group controlId="exampleForm.ControlInput1">
@@ -101,30 +97,35 @@ function TakeQuizRules(props) {
                 Select Number of Questions.{" "}
               </Form.Label>
               <div>
-                <Form.Check onChange={(event)=>console.log('Event',event.target)}
+                <Form.Check onChange={(event) => setQuestionNumber(event.target.value)}
                   type="radio"
                   name="questions"
-                  label="20 Questions "
+                  label="20 Questions"
+                  value="20"
                   checked
                 ></Form.Check>
-                <Form.Check onChange={(event)=>console.log('Event',event.target)}
+                <Form.Check onChange={(event) => setQuestionNumber(event.target.value)}
                   type="radio"
                   name="questions"
+                  value="25"
                   label="25 Questions"
                 ></Form.Check>
-                <Form.Check onChange={(event)=>console.log('Event',event.target)}
+                <Form.Check onChange={(event) => setQuestionNumber(event.target.value)}
                   type="radio"
                   name="questions"
+                  value="30"
                   label="30 Questions "
                 ></Form.Check>
-                <Form.Check onChange={(event)=>console.log('Event',event.target)}
+                <Form.Check onChange={(event) => setQuestionNumber(event.target.value)}
                   type="radio"
                   name="questions"
+                  value="35"
                   label="35 Questions"
                 ></Form.Check>
-                <Form.Check onChange={(event)=>console.log('Event',event.target)}
+                <Form.Check onChange={(event) => setQuestionNumber(event.target.value)}
                   type="radio"
                   name="questions"
+                  value="40"
                   label="40 Questions "
                 ></Form.Check>
               </div>
