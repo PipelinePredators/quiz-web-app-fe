@@ -1,6 +1,5 @@
 import Axios from "axios"
 
-// const host = 'http://18.204.21.86:8080'
 // const host = 'http://localhost:8080'
 const host = 'http://pipelinepredatorseb-env.eba-8fpya2g3.us-east-1.elasticbeanstalk.com'
 

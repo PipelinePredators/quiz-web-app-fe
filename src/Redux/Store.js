@@ -12,6 +12,7 @@ import {
 import storage from 'redux-persist/lib/storage'
 import subjectReducer from './SubjectSlice'
 import studentReducer from './StudentSlice'
+import takeQuizReducer from './TakeQuizSlice'
 
 const subjectConfig = {
     key: 'subject',
@@ -27,11 +28,17 @@ const studentConfig = {
     whitelist:['token']
 }
 
+const takeQuizConfig = {
+    key:'takeQuiz',
+    version:1,
+    storage
+}
 
 const store = configureStore({
     reducer: {
         subject: persistReducer(subjectConfig,subjectReducer),
-        student:persistReducer(studentConfig,studentReducer)
+        student:persistReducer(studentConfig,studentReducer),
+        takeQuiz:persistReducer(takeQuizConfig,takeQuizReducer)
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
