@@ -1,7 +1,8 @@
 import Axios from "axios"
 
 // const host = 'http://localhost:8080'
-const host = 'http://pipelinepredatorseb-env.eba-8fpya2g3.us-east-1.elasticbeanstalk.com'
+// const host = 'http://pipelinepredatorseb-env.eba-8fpya2g3.us-east-1.elasticbeanstalk.com'
+const host = 'https://pipelinepredators.com'
 
 /**
  * It takes in an email and password, and returns the data from the API call.
