@@ -25,7 +25,7 @@ const Home = (props) => {
             <div>
               <h2>Welcome to the E-high testing platform</h2>
               <h5>Test your might against some of the toughtest exams in the country</h5>
-              <Button   onClick={()=>history.push('../subject')}>Get Started</Button>
+              <Button onClick={() => history.push('../subject')}>Get Started</Button>
             </div>
           </div>
           <div className='w-50 d-lg-none d-sm-flex flex-column align-items-center'>
@@ -33,22 +33,23 @@ const Home = (props) => {
               <img src={Predator} alt="company logo" />
             </div>
             <div className="d-flex flex-column justify-content-center w-100">
-              <h5 className="text-center">Lorem ipsum dolor sit amet.</h5>
-              <Button   onClick={()=>history.push('../subject')}>Get Started</Button>
+              <h2>Welcome to the E-high testing platform</h2>
+              <h5>Test your might against some of the toughtest exams in the country</h5>
+              <Button onClick={() => history.push('../subject')}>Get Started</Button>
             </div>
           </div>
         </section>
       </Col>
       <Col lg={12} xs={12}>
-        <ArticleComponent cardImage={imageOne} title="Take Quiz" url="/subject"/>
+        <ArticleComponent cardImage={imageOne} title="Take Quiz" url="/subject" />
         <hr />
       </Col>
       <Col lg={12} xs={12}>
-        <ArticleAlternateComponent cardImage={imageTwo} title="Review Past Questions" url="/subject"/>
+        <ArticleAlternateComponent cardImage={imageTwo} title="Review Past Questions" url="/subject" />
         <hr />
       </Col>
       <Col lg={12} xs={12}>
-        <ArticleComponent cardImage={imageThree} title="Take Challenge" url="/subject"/>
+        <ArticleComponent cardImage={imageThree} title="Take Challenge" url="/subject" />
       </Col>
     </Row>
   )
