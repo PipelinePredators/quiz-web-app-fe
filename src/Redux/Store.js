@@ -1,4 +1,4 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import {
     persistStore,
     persistReducer,
@@ -13,6 +13,7 @@ import storage from 'redux-persist/lib/storage'
 import subjectReducer from './SubjectSlice'
 import studentReducer from './StudentSlice'
 import takeQuizReducer from './TakeQuizSlice'
+import graphDataReducer from './QuizGraphSlice'
 
 const subjectConfig = {
     key: 'subject',
@@ -34,11 +35,18 @@ const takeQuizConfig = {
     storage
 }
 
+const graphDataConfig = {
+    key:'quizGraphData',
+    version:1,
+    storage
+}
+
 const store = configureStore({
     reducer: {
         subject: persistReducer(subjectConfig,subjectReducer),
         student:persistReducer(studentConfig,studentReducer),
-        takeQuiz:persistReducer(takeQuizConfig,takeQuizReducer)
+        takeQuiz:persistReducer(takeQuizConfig,takeQuizReducer),
+        quizGraphData:persistReducer(graphDataConfig,graphDataReducer)
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
