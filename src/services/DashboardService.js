@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const host = 'http://localhost:8080';
+// const host = 'http://localhost:8080';
+const host = 'https://backend.pipelinepredators.com'
 
 /**
  * It returns the data from the axios request.
