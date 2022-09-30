@@ -1,5 +1,6 @@
 import { createContext, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { setStudentDetailsState } from "Redux/StudentSlice";
 import { removeStudentState } from "Redux/StudentSlice";
 import { setStudentState } from "Redux/StudentSlice";
 
@@ -17,8 +18,10 @@ export const AuthProvider = ({ children }) => {
     const dispatch = useDispatch();
 
     const login = (value) => {
+        console.log('Value',value)
         /* Dispatching an action to the redux store. */
         dispatch(setStudentState(value.token))
+        dispatch(setStudentDetailsState(value.student));
     }
 
 

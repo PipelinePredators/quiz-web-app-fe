@@ -26,7 +26,7 @@ const studentConfig = {
     key:'student',
     version:1,
     storage:storage,
-    whitelist:['token']
+    whitelist:['token','studentDetails']
 }
 
 const takeQuizConfig = {

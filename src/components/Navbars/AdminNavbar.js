@@ -23,11 +23,14 @@ import {
 } from "reactstrap";
 import { useHistory, useLocation } from "react-router-dom";
 import { useAuth } from "Guards/Auth";
+import { useSelector } from "react-redux";
 
 function AdminNavbar(props) {
   const [collapseOpen, setcollapseOpen] = React.useState(false);
   const [modalSearch, setmodalSearch] = React.useState(false);
   const [color, setcolor] = React.useState("navbar-transparent");
+
+  const studentDetails = useSelector((state) => state.student.studentDetails);
 
 
   React.useEffect(() => {
@@ -115,32 +118,38 @@ function AdminNavbar(props) {
                 !auth.student && (<Button className="text-danger" onClick={() => history.push('./login')}>Login</Button>)}
 
               {auth.student && (
-                <UncontrolledDropdown nav>
-                  <DropdownToggle
-                    caret
-                    color="default"
-                    nav
-                    onClick={(e) => e.preventDefault()}
-                  >
-                    <div className="photo">
-                      <img alt="..." src={require("assets/img/anime3.png")} />
-                    </div>
-                    <b className="caret d-none d-lg-block d-xl-block" />
-                    <p className="d-lg-none">Enoch</p>
-                  </DropdownToggle>
-                  <DropdownMenu className="dropdown-navbar" right tag="ul">
-                    <NavLink tag="li">
-                      <DropdownItem className="nav-item" onClick={() => history.push('../admin/dashboard')}>Dashboard</DropdownItem>
-                    </NavLink>
-                    <NavLink tag="li">
-                      <DropdownItem className="nav-item" onClick={() => history.push('../admin/user-profile')}>Profile</DropdownItem>
-                    </NavLink>
-                    <DropdownItem divider tag="li" />
-                    <NavLink tag="li">
-                      <DropdownItem className="nav-item" onClick={() => handleLogout()}>Log out</DropdownItem>
-                    </NavLink>
-                  </DropdownMenu>
-                </UncontrolledDropdown>
+                <>
+                  <UncontrolledDropdown nav>
+                    <DropdownToggle
+                      caret
+                      color="default"
+                      nav
+                      onClick={(e) => e.preventDefault()}
+                    >
+                      <div className="photo">
+                        <img alt="..." src={require("assets/img/anime3.png")} />
+                      </div>
+                      <b className="caret d-none d-lg-block d-xl-block" />
+                      <p className="d-lg-none">{studentDetails.firstname}</p>
+                    </DropdownToggle>
+                    <DropdownMenu className="dropdown-navbar" right tag="ul">
+                      <NavLink tag="li" className="d-lg-flex d-sm-none">
+                        <DropdownItem header className="nav-item" tag="h3">Welcome {studentDetails.firstname}!</DropdownItem>
+                      </NavLink>
+                        <DropdownItem tag="li" divider/>
+                      <NavLink tag="li">
+                        <DropdownItem className="nav-item" onClick={() => history.push('../admin/dashboard')}>Dashboard</DropdownItem>
+                      </NavLink>
+                      <NavLink tag="li">
+                        <DropdownItem className="nav-item" onClick={() => history.push('../admin/user-profile')}>Profile</DropdownItem>
+                      </NavLink>
+                      <DropdownItem divider tag="li" />
+                      <NavLink tag="li">
+                        <DropdownItem className="nav-item" onClick={() => handleLogout()}>Log out</DropdownItem>
+                      </NavLink>
+                    </DropdownMenu>
+                  </UncontrolledDropdown>
+                </>
               )
               }
 
