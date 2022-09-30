@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 const twoDigits = (num) => String(num).padStart(2, "0");
 
 export default function Timer({ setModal }) {
-  const INITIAL_COUNT = 10;
+  const INITIAL_COUNT = 4000;
   const [secondsRemaining, setSecondsRemaining] = useState(() => INITIAL_COUNT);
 
   const secondsToDisplay = secondsRemaining % 60;
